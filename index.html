@@ -1,0 +1,159 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Meridian Smart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f4f6f8;--panel:#fff;--ink:#0d1b2a;--muted:#5c6b7a;--line:#e5eaf0;--teal:#0ea5a5;--teal-2:#0b8585;--dark:#0d1b2a;--shadow:0 1px 2px rgba(13,27,42,.05),0 14px 36px rgba(13,27,42,.08);--disp:"Sora",system-ui,sans-serif;--sans:"Inter",system-ui,sans-serif;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#0a141e;--panel:#10202e;--ink:#eef4f8;--muted:#9fb0bf;--line:#1d3140;--teal:#2dd4d4;--teal-2:#4fe0e0;--dark:#06101a;--shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px rgba(0,0,0,.5);color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:15px 0}
+.logo{font-family:var(--disp);font-weight:700;font-size:20px;display:flex;align-items:center;gap:9px}
+.logo .d{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--teal),var(--teal-2));display:inline-grid;place-items:center;color:#fff;font-size:15px}
+.cartbtn{position:relative;background:var(--dark);color:#fff;border:0;border-radius:11px;padding:10px 16px;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit}
+.cartbtn .n{position:absolute;top:-7px;right:-7px;background:var(--teal);color:#042;min-width:21px;height:21px;border-radius:999px;font-size:12px;font-weight:700;display:grid;place-items:center;padding:0 5px}
+.hero{background:linear-gradient(150deg,var(--dark),#13324a);color:#eaf4f8;border-radius:22px;padding:44px 36px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border:2px solid rgba(45,212,212,.22);border-radius:50%}
+.hero .eye{color:var(--teal);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(28px,5vw,46px);line-height:1.05;margin:12px 0 10px;max-width:16ch}
+.hero p{color:#b9cfdb;margin:0;font-size:16px;max-width:46ch}
+.hero .ships{margin-top:18px;display:inline-flex;gap:8px;align-items:center;font-size:13px;color:#9fd;background:rgba(45,212,212,.12);border:1px solid rgba(45,212,212,.3);padding:7px 13px;border-radius:999px}
+h2.sec{font-family:var(--disp);font-weight:600;font-size:24px;margin:34px 0 4px}
+.subsec{color:var(--muted);font-size:14px;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.thumb{height:160px;display:grid;place-items:center;position:relative}
+.thumb.a{background:linear-gradient(145deg,#0ea5a5,#0b6b6b)}.thumb.b{background:linear-gradient(145deg,#3b6fb5,#24436f)}.thumb.c{background:linear-gradient(145deg,#8a63c4,#553c82)}.thumb.d{background:linear-gradient(145deg,#c47a3b,#8a5223)}.thumb.e{background:linear-gradient(145deg,#2ba84a,#1b6b30)}.thumb.f{background:linear-gradient(145deg,#d14d6e,#8a2f47)}
+.thumb svg{width:58px;height:58px;stroke:#fff;fill:none;stroke-width:1.4;opacity:.92}
+.thumb .tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:#0d1b2a;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px}
+.cbody{padding:15px 16px;display:flex;flex-direction:column;gap:7px;flex:1}
+.cbody h3{font-family:var(--disp);font-weight:600;font-size:17px;margin:0}
+.cbody .desc{font-size:13px;color:var(--muted);margin:0;flex:1}
+.rowb{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.price{font-family:var(--disp);font-weight:700;font-size:18px}.price small{color:var(--muted);font-weight:500;font-size:12px;font-family:var(--sans);text-decoration:line-through;margin-left:5px}
+.add{background:var(--teal);color:#042;border:0;border-radius:10px;padding:9px 16px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;transition:transform .12s}
+.add:active{transform:scale(.94)}
+.add.in{background:var(--dark);color:#fff}
+.trust{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin:30px 0 6px;color:var(--muted);font-size:13px;font-weight:500}.trust b{color:var(--ink)}
+.foot{text-align:center;color:var(--muted);font-size:12.5px;padding:28px 0 40px}.foot b{color:var(--ink)}
+.scrim{position:fixed;inset:0;background:rgba(6,16,26,.5);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:380px;max-width:92vw;background:var(--panel);box-shadow:-10px 0 40px rgba(0,0,0,.2);transform:translateX(100%);transition:transform .24s;z-index:50;display:flex;flex-direction:column}
+.drawer.on{transform:translateX(0)}
+.dhead{padding:18px 18px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.dhead h3{font-family:var(--disp);font-weight:600;font-size:18px;margin:0}
+.x{background:none;border:0;font-size:24px;color:var(--muted);cursor:pointer;line-height:1}
+.items{flex:1;overflow:auto;padding:10px 18px}
+.empty{color:var(--muted);text-align:center;padding:40px 10px;font-size:14px}
+.item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.item .sw{width:44px;height:44px;border-radius:10px;flex:none}
+.item .inm{flex:1;min-width:0}.item .inm b{font-size:14px;font-weight:600;display:block}.item .inm span{font-size:12.5px;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:9px}
+.qty button{width:26px;height:26px;border-radius:7px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:15px;font-weight:700;cursor:pointer;line-height:1}
+.qty span{font-weight:600;font-size:14px;min-width:16px;text-align:center}
+.dfoot{padding:16px 18px;border-top:1px solid var(--line)}
+.totrow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.totrow b{font-family:var(--disp);font-size:20px}
+.order{display:block;width:100%;text-align:center;background:#25d366;color:#fff;border:0;border-radius:12px;padding:14px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;font-family:inherit}
+.order:hover{filter:brightness(1.05)}
+.note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:9px}
+@media(max-width:560px){.hero{padding:34px 22px}}
+</style></head><body>
+<div class="wrap">
+  <div class="nav">
+    <div class="logo"><span class="d">◆</span> Meridian Smart</div>
+    <button class="cartbtn" id="openCart">Cart <span class="n" id="count">0</span></button>
+  </div>
+  <div class="hero">
+    <div class="eye">Smart home &amp; life · Egypt</div>
+    <h1>Smart devices that make the home think.</h1>
+    <p>Hand-picked smart gadgets, delivered across Egypt. Cash on delivery or online — ordered in one message.</p>
+    <div class="ships">🚚 Fast shipping · Alexandria · Cairo · Delta</div>
+  </div>
+
+  <h2 class="sec">Featured smart devices</h2>
+  <p class="subsec">Tap <b>Add</b> on anything you like — review your cart, then send the order on WhatsApp.</p>
+  <div class="grid" id="grid"></div>
+
+  <div class="trust"><span>✅ <b>Cash on delivery</b></span><span>🔄 <b>7-day returns</b></span><span>🛡️ <b>1-year warranty</b></span><span>💬 <b>Order by WhatsApp</b></span></div>
+
+  <div class="foot"><b>Meridian Smart</b> — a Meridian Zero company · Alexandria, Egypt<br>Prices in EGP. This is your live public store; online card payment and a full catalogue come next.</div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Your cart">
+  <div class="dhead"><h3>Your cart</h3><button class="x" id="closeCart">&times;</button></div>
+  <div class="items" id="items"></div>
+  <div class="dfoot">
+    <div class="totrow"><span>Total</span><b id="total">0 EGP</b></div>
+    <a class="order" id="order" href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
+    <div class="note" id="wnote">Set your WhatsApp number to receive orders.</div>
+  </div>
+</aside>
+<script>
+/* === Set your WhatsApp number here (country code, no +, no spaces). e.g. 2010XXXXXXXX === */
+var WHATSAPP = "";
+
+var P = [
+ {id:"watch", n:"Smart Fitness Watch", d:"Heart-rate, sleep &amp; 100+ sport modes. 7-day battery.", price:1850, old:2400, c:"a", svg:'<rect x="7" y="6" width="10" height="12" rx="3"/><path d="M9 6V3h6v3M9 18v3h6v-3"/><circle cx="12" cy="12" r="2.3"/>'},
+ {id:"bulb", n:"Smart LED Bulbs (4-pack)", d:"16M colours, app &amp; voice control, schedules.", price:620, old:900, c:"b", svg:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.3 1 2.5h6c0-1.2.3-1.8 1-2.5A6 6 0 0 0 12 3z"/>'},
+ {id:"plug", n:"Wi-Fi Smart Plug", d:"Switch any device from your phone. Energy tracking.", price:340, old:0, c:"c", svg:'<rect x="5" y="4" width="14" height="16" rx="3"/><path d="M10 9v2M14 9v2M9 20v1M15 20v1"/>'},
+ {id:"cam", n:"Indoor Security Camera", d:"1080p, night vision, motion alerts, 2-way audio.", price:980, old:1300, c:"d", svg:'<path d="M3 8l13-3v10L3 12z"/><circle cx="9" cy="10" r="2"/><path d="M16 9h3a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-3"/>'},
+ {id:"vac", n:"Robot Vacuum Cleaner", d:"Auto-mapping, app control, self-charging.", price:4200, old:5500, c:"e", svg:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4"/><path d="M12 4v3M8 20l1-3M16 20l-1-3"/>'},
+ {id:"speak", n:"Smart Speaker + Assistant", d:"Voice assistant, room-filling sound, smart-home hub.", price:1450, old:1900, c:"f", svg:'<rect x="7" y="3" width="10" height="18" rx="4"/><circle cx="12" cy="9" r="2"/><circle cx="12" cy="15" r="2.6"/>'}
+];
+var cart={};
+function egp(n){return n.toLocaleString('en-US')+' EGP';}
+var grid=document.getElementById('grid');
+P.forEach(function(p){
+  var old=p.old?'<small>'+egp(p.old)+'</small>':'';
+  var tag=p.old?'<span class="tag">Offer</span>':'';
+  grid.insertAdjacentHTML('beforeend',
+    '<div class="card"><div class="thumb '+p.c+'">'+tag+'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">'+p.svg+'</svg></div>'+
+    '<div class="cbody"><h3>'+p.n+'</h3><p class="desc">'+p.d+'</p>'+
+    '<div class="rowb"><span class="price">'+egp(p.price)+old+'</span>'+
+    '<button class="add" data-id="'+p.id+'">Add</button></div></div></div>');
+});
+function find(id){for(var i=0;i<P.length;i++){if(P[i].id===id)return P[i];}}
+function render(){
+  var items=document.getElementById('items'),n=0,tot=0,html='';
+  Object.keys(cart).forEach(function(id){
+    var p=find(id),q=cart[id];n+=q;tot+=p.price*q;
+    var sw=document.querySelector('.thumb.'+p.c);
+    html+='<div class="item"><span class="sw thumb '+p.c+'"></span>'+
+      '<span class="inm"><b>'+p.n+'</b><span>'+egp(p.price)+'</span></span>'+
+      '<span class="qty"><button data-m="'+id+'">&minus;</button><span>'+q+'</span><button data-p="'+id+'">+</button></span></div>';
+  });
+  items.innerHTML=html||'<div class="empty">Your cart is empty.<br>Add a device to get started.</div>';
+  document.getElementById('count').textContent=n;
+  document.getElementById('total').textContent=egp(tot);
+  document.querySelectorAll('.add').forEach(function(b){
+    var inCart=cart[b.dataset.id];b.textContent=inCart?'Added ✓':'Add';b.className='add'+(inCart?' in':'');
+  });
+  buildOrder(tot);
+}
+function buildOrder(tot){
+  var a=document.getElementById('order'),note=document.getElementById('wnote');
+  var lines=['Hello Meridian Smart, I would like to order:'];
+  Object.keys(cart).forEach(function(id){var p=find(id);lines.push('• '+p.n+' x'+cart[id]+' — '+egp(p.price*cart[id]));});
+  lines.push('Total: '+egp(tot));
+  var msg=encodeURIComponent(lines.join('\n'));
+  if(WHATSAPP){a.href='https://wa.me/'+WHATSAPP+'?text='+msg;a.style.opacity=tot?1:.5;a.style.pointerEvents=tot?'auto':'none';note.textContent='Opens WhatsApp with your order ready to send.';}
+  else{a.href='#';a.textContent='Order on WhatsApp';note.textContent='Owner: set your WhatsApp number in the code to receive orders here.';}
+}
+document.getElementById('grid').addEventListener('click',function(e){
+  var b=e.target.closest('.add');if(!b)return;cart[b.dataset.id]=(cart[b.dataset.id]||0)+1;render();openD();
+});
+document.getElementById('items').addEventListener('click',function(e){
+  var pl=e.target.closest('[data-p]'),mi=e.target.closest('[data-m]');
+  if(pl){cart[pl.dataset.p]++;render();}
+  if(mi){var id=mi.dataset.m;cart[id]--;if(cart[id]<=0)delete cart[id];render();}
+});
+var scrim=document.getElementById('scrim'),drawer=document.getElementById('drawer');
+function openD(){drawer.classList.add('on');scrim.classList.add('on');}
+function closeD(){drawer.classList.remove('on');scrim.classList.remove('on');}
+document.getElementById('openCart').addEventListener('click',openD);
+document.getElementById('closeCart').addEventListener('click',closeD);
+scrim.addEventListener('click',closeD);
+document.getElementById('order').addEventListener('click',function(e){if(!WHATSAPP||Object.keys(cart).length===0)e.preventDefault();});
+render();
+</script></body></html>
