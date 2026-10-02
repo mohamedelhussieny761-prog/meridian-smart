@@ -26,11 +26,14 @@ jobs:
           node-version: 22
       - name: Node project - install, build, test
         if: hashFiles('package.json') != ''
+        env:
+          PORT: '3000'
+          BASE_PATH: '/'
         run: |
           if [ -f pnpm-lock.yaml ] || [ -f pnpm-workspace.yaml ] || grep -q 'Use pnpm' package.json; then
             echo "Package manager: pnpm"
             npm install -g pnpm@latest --silent
-            pnpm install --frozen-lockfile || pnpm install
+            pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
             pnpm run --if-present build
             pnpm run --if-present test
           else
